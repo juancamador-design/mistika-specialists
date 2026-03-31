@@ -484,5 +484,13 @@ function mkFetch(){
 mkApplyLang();
 mkFetch();
 </script>
-</body>
+<script>
+function mkSendHeight(){
+  var h = document.getElementById('mk-root').scrollHeight;
+  window.parent.postMessage({mkHeight: h}, '*');
+}
+window.addEventListener('load', mkSendHeight);
+window.addEventListener('resize', mkSendHeight);
+setInterval(mkSendHeight, 800);
+</script></body>
 </html>
