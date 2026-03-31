@@ -1,15 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mistika — Specialists</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#09090e !important;min-height:100%}
+body{background:#09090e !important;margin:0;padding:0;width:100%;min-height:100vh}
+/* Fallback fonts if Google Fonts blocked */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;src:local('Georgia'),local('Times New Roman');}
 
+#mk-root{
+  --gold:#c8a96e;--gold-p:rgba(200,169,110,0.15);--gold-g:rgba(200,169,110,0.07);
+  --cream:#f0ece4;--cream-m:rgba(240,236,228,0.58);
+  --ink:#09090e;--ink2:#13131c;--ink3:#1c1c28;
+  --fog:rgba(255,255,255,0.05);
+  --teal:#4db8a0;
+  --violet-p:rgba(139,127,212,0.15);--teal-p:rgba(77,184,160,0.15);
+  --rose-p:rgba(196,127,160,0.15);--amber-p:rgba(212,147,90,0.15);
+  --sky-p:rgba(90,159,212,0.15);
+  background:#09090e !important;color:#f0ece4 !important;
+  font-family:'DM Sans',Georgia,sans-serif;font-weight:300;
+  min-height:100vh;width:100%;
+  display:block;
+}
+#mk-root *{font-family:'DM Sans',Georgia,sans-serif;}
+#mk-root .mk-h1,#mk-root .mk-card-name,#mk-root .mk-status{
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+}
+
+/* LANG BAR */
+.mk-lang-bar{display:flex;justify-content:flex-end;padding:16px 32px 0;gap:4px;}
+.mk-lang-btn{
+  font-size:11px;letter-spacing:.1em;font-weight:500;
+  padding:5px 14px;border-radius:4px;border:0.5px solid rgba(255,255,255,0.1);
+  cursor:pointer;background:transparent;color:rgba(240,236,228,0.58);transition:all .18s;
+}
+.mk-lang-btn.on{background:rgba(200,169,110,0.15);border-color:#c8a96e;color:#c8a96e;}
+.mk-lang-btn:hover:not(.on){color:#f0ece4;border-color:rgba(255,255,255,0.25);}
+
+/* HERO */
+.mk-hero{position:relative;padding:64px 32px 48px;text-align:center;overflow:hidden;}
+.mk-hero::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(200,169,110,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.mk-eyebrow{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:#c8a96e;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;gap:12px;font-weight:500;
+}
+.mk-eyebrow::before,.mk-eyebrow::after{content:'';width:36px;height:.5px;background:#c8a96e;opacity:.4;}
+.mk-h1{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:clamp(38px,5.5vw,66px);font-weight:300;line-height:1.06;
+  color:#f0ece4;margin-bottom:16px;
+}
+.mk-h1 em{font-style:italic;color:#c8a96e;}
+.mk-hero-sub{
+  font-size:14px;color:rgba(240,236,228,0.58);
+  max-width:420px;margin:0 auto 32px;line-height:1.75;font-weight:300;
+}
+.mk-count{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;
+  color:rgba(240,236,228,0.58);background:rgba(255,255,255,0.05);
+  border:.5px solid rgba(255,255,255,0.07);padding:5px 14px;border-radius:20px;
+}
+.mk-count b{color:#c8a96e;font-weight:500;}
+
+/* FILTERS */
+.mk-filters{padding:0 32px 36px;max-width:1080px;margin:0 auto;}
+.mk-filter-groups{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px;}
+.mk-fg{display:flex;flex-direction:column;gap:6px;flex:1;min-width:120px;}
+.mk-flabel{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,236,228,0.58);font-weight:500;}
+.mk-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.mk-pill{
+  font-size:11px;padding:4px 11px;border-radius:20px;
+  border:.5px solid rgba(255,255,255,0.09);background:transparent;
+  color:rgba(240,236,228,0.58);cursor:pointer;transition:all .17s;font-weight:300;
+}
+.mk-pill:hover{border-color:#c8a96e;color:#c8a96e;}
+.mk-pill.on{background:rgba(200,169,110,0.15);border-color:#c8a96e;color:#c8a96e;}
+.mk-search-row{display:flex;gap:8px;align-items:center;}
+.mk-search{
+  flex:1;background:rgba(255,255,255,0.04);
+  border:.5px solid rgba(255,255,255,0.08);border-radius:7px;
+  padding:9px 14px;color:#f0ece4;font-size:13px;font-weight:300;outline:none;
+  transition:border-color .2s;
+}
+.mk-search::placeholder{color:rgba(240,236,228,0.22);}
+.mk-search:focus{border-color:rgba(200,169,110,0.4);}
+.mk-clear-btn{
+  font-size:11px;color:rgba(240,236,228,0.5);background:none;border:none;
+  cursor:pointer;padding:8px 4px;opacity:.55;transition:opacity .2s;
+}
+.mk-clear-btn:hover{opacity:1;}
+
+/* GRID */
+.mk-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:2px;max-width:1080px;margin:0 auto;padding:0 32px 72px;
+}
+
+/* CARD */
+.mk-card{position:relative;overflow:hidden;aspect-ratio:3/4;background:#13131c;}
+.mk-card.hidden{display:none;}
+.mk-card-img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+  filter:grayscale(15%) brightness(.78);
+}
+.mk-card:hover .mk-card-img{transform:scale(1.04);filter:grayscale(0%) brightness(.72);}
+.mk-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(9,9,14,.97) 0%,rgba(9,9,14,.55) 36%,rgba(9,9,14,.08) 62%,transparent 100%);
+}
+.mk-card-top{position:absolute;top:13px;right:13px;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.mk-avail{
+  display:flex;align-items:center;gap:5px;font-size:10px;
+  background:rgba(9,9,14,.82);border:.5px solid rgba(255,255,255,0.07);
+  padding:3px 9px;border-radius:20px;color:rgba(240,236,228,0.6);
+}
+.mk-avail-dot{width:5px;height:5px;border-radius:50%;background:#4db8a0;animation:mk-pulse 2s infinite;}
+@keyframes mk-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.mk-lang-badge{
+  font-size:9px;letter-spacing:.07em;text-transform:uppercase;
+  background:rgba(9,9,14,.82);border:.5px solid rgba(255,255,255,0.07);
+  padding:3px 8px;border-radius:10px;color:rgba(240,236,228,0.6);
+}
+.mk-card-body{position:absolute;bottom:0;left:0;right:0;padding:20px 17px 17px;}
+.mk-card-spec{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c8a96e;margin-bottom:5px;font-weight:500;}
+.mk-card-name{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:30px;font-weight:400;color:#f0ece4;line-height:1;margin-bottom:8px;
+}
+.mk-card-bio{
+  font-size:12px;color:rgba(240,236,228,0.58);line-height:1.6;margin-bottom:9px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.mk-stars{display:flex;align-items:center;gap:6px;margin-bottom:9px;}
+.mk-stars-gold{font-size:12px;color:#c8a96e;letter-spacing:1px;}
+.mk-stars-ct{font-size:11px;color:rgba(240,236,228,0.58);}
+.mk-card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:13px;}
+.mk-tag{font-size:9px;letter-spacing:.04em;padding:3px 8px;border-radius:10px;font-weight:500;}
+.t-violet{background:rgba(139,127,212,.15);color:#a89cf5;border:.5px solid rgba(139,127,212,.25);}
+.t-teal{background:rgba(77,184,160,.15);color:#6fd4bb;border:.5px solid rgba(77,184,160,.25);}
+.t-rose{background:rgba(196,127,160,.15);color:#d89ab8;border:.5px solid rgba(196,127,160,.25);}
+.t-amber{background:rgba(212,147,90,.15);color:#e8b07a;border:.5px solid rgba(212,147,90,.25);}
+.t-sky{background:rgba(90,159,212,.15);color:#7ab8e8;border:.5px solid rgba(90,159,212,.25);}
+.t-gold{background:rgba(200,169,110,.15);color:#c8a96e;border:.5px solid rgba(200,169,110,.25);}
+.mk-cta{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  color:#c8a96e;text-decoration:none;
+  border:.5px solid rgba(200,169,110,.3);padding:9px 14px;border-radius:4px;
+  background:rgba(200,169,110,.07);transition:all .22s;
+}
+.mk-cta:hover{background:rgba(200,169,110,.15);border-color:#c8a96e;color:#f0ece4;}
+.mk-cta-arr{transition:transform .18s;display:inline-block;}
+.mk-cta:hover .mk-cta-arr{transform:translateX(3px);}
+.mk-status{
+  grid-column:1/-1;text-align:center;padding:70px 20px;
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-style:italic;font-weight:300;color:rgba(240,236,228,0.58);
+}
+.mk-status small{display:block;font-size:12px;font-style:normal;margin-top:8px;opacity:.4;}
+
+@media(max-width:640px){
+  .mk-hero{padding:52px 18px 36px;}
+  .mk-filters{padding:0 16px 28px;}
+  .mk-grid{padding:0 16px 56px;grid-template-columns:1fr;}
+  .mk-fg{min-width:100%;}
+  .mk-lang-bar{padding:12px 18px 0;}
+}
+</style>
+</head>
+<body>
 <div id="mk-root">
 
+  <!-- LANGUAGE TOGGLE -->
   <div class="mk-lang-bar">
     <button class="mk-lang-btn on" data-lang="es" onclick="mkSetLang('es')">ES</button>
     <button class="mk-lang-btn"   data-lang="en" onclick="mkSetLang('en')">EN</button>
   </div>
 
+  <!-- HERO -->
   <div class="mk-hero">
-    <div class="mk-eyebrow" data-es="Mistika · Guías Espirituales" data-en="Mistika · Spiritual Guides">Mistika · Guías Espirituales</div>
-    <h1 class="mk-hero-h1" data-es="Conoce a Nuestros<br><em>Especialistas</em>" data-en="Meet Our<br><em>Specialists</em>">
+    <div class="mk-eyebrow"
+         data-es="Mistika · Guías Espirituales"
+         data-en="Mistika · Spiritual Guides">Mistika · Guías Espirituales</div>
+    <h1 class="mk-h1"
+        data-es="Conoce a Nuestros<br><em>Especialistas</em>"
+        data-en="Meet Our<br><em>Specialists</em>">
       Conoce a Nuestros<br><em>Especialistas</em>
     </h1>
     <p class="mk-hero-sub"
@@ -17,9 +203,13 @@
        data-en="Every guide has been chosen for their authenticity, experience and spiritual depth. Find the one that resonates with you.">
       Cada guía ha sido seleccionado por su autenticidad, experiencia y profundidad espiritual.
     </p>
-    <div class="mk-count"><b id="mkVisCount">—</b>&nbsp;<span data-es="especialistas disponibles" data-en="specialists available">especialistas disponibles</span></div>
+    <div class="mk-count">
+      <b id="mkVisCount">—</b>&nbsp;
+      <span data-es="especialistas disponibles" data-en="specialists available">especialistas disponibles</span>
+    </div>
   </div>
 
+  <!-- FILTERS -->
   <div class="mk-filters">
     <div class="mk-filter-groups">
       <div class="mk-fg">
@@ -27,12 +217,12 @@
         <div class="mk-pills">
           <button class="mk-pill on" data-f="tecnica" data-v="all" data-es="Todas" data-en="All">Todas</button>
           <button class="mk-pill" data-f="tecnica" data-v="tarot">Tarot</button>
-          <button class="mk-pill" data-f="tecnica" data-v="astrologia"  data-es="Astrología"    data-en="Astrology">Astrología</button>
-          <button class="mk-pill" data-f="tecnica" data-v="numerologia" data-es="Numerología"   data-en="Numerology">Numerología</button>
-          <button class="mk-pill" data-f="tecnica" data-v="akashic"     data-es="Akásicos"      data-en="Akashic">Akásicos</button>
-          <button class="mk-pill" data-f="tecnica" data-v="coaching"    data-es="Coaching/NLP"  data-en="Coaching/NLP">Coaching</button>
-          <button class="mk-pill" data-f="tecnica" data-v="meditacion"  data-es="Meditación"    data-en="Meditation">Meditación</button>
-          <button class="mk-pill" data-f="tecnica" data-v="medium"      data-es="Mediumidad"    data-en="Mediumship">Mediumidad</button>
+          <button class="mk-pill" data-f="tecnica" data-v="astrologia"  data-es="Astrología"   data-en="Astrology">Astrología</button>
+          <button class="mk-pill" data-f="tecnica" data-v="numerologia" data-es="Numerología"  data-en="Numerology">Numerología</button>
+          <button class="mk-pill" data-f="tecnica" data-v="akashic"     data-es="Akásicos"     data-en="Akashic">Akásicos</button>
+          <button class="mk-pill" data-f="tecnica" data-v="coaching"    data-es="Coaching/NLP" data-en="Coaching/NLP">Coaching</button>
+          <button class="mk-pill" data-f="tecnica" data-v="meditacion"  data-es="Meditación"   data-en="Meditation">Meditación</button>
+          <button class="mk-pill" data-f="tecnica" data-v="medium"      data-es="Mediumidad"   data-en="Mediumship">Mediumidad</button>
           <button class="mk-pill" data-f="tecnica" data-v="reiki">Reiki</button>
         </div>
       </div>
@@ -48,13 +238,13 @@
       <div class="mk-fg">
         <div class="mk-flabel" data-es="Enfoque" data-en="Focus">Enfoque</div>
         <div class="mk-pills">
-          <button class="mk-pill on" data-f="enfoque" data-v="all"            data-es="Todos"           data-en="All">Todos</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="amor"           data-es="Amor"            data-en="Love">Amor</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="carrera"        data-es="Carrera"         data-en="Career">Carrera</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="salud"          data-es="Salud"           data-en="Health">Salud</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="espiritualidad" data-es="Espiritualidad"  data-en="Spirituality">Espiritualidad</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="proposito"      data-es="Propósito"       data-en="Purpose">Propósito</button>
-          <button class="mk-pill"    data-f="enfoque" data-v="dinero"         data-es="Dinero"          data-en="Money">Dinero</button>
+          <button class="mk-pill on" data-f="enfoque" data-v="all"            data-es="Todos"          data-en="All">Todos</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="amor"           data-es="Amor"           data-en="Love">Amor</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="carrera"        data-es="Carrera"        data-en="Career">Carrera</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="salud"          data-es="Salud"          data-en="Health">Salud</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="espiritualidad" data-es="Espiritualidad" data-en="Spirituality">Espiritualidad</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="proposito"      data-es="Propósito"      data-en="Purpose">Propósito</button>
+          <button class="mk-pill"    data-f="enfoque" data-v="dinero"         data-es="Dinero"         data-en="Money">Dinero</button>
         </div>
       </div>
     </div>
@@ -63,70 +253,126 @@
              data-ph-es="Buscar por nombre o especialidad..."
              data-ph-en="Search by name or specialty..."
              placeholder="Buscar por nombre o especialidad...">
-      <button class="mk-clear-btn" id="mkClearBtn" data-es="Limpiar" data-en="Clear">Limpiar</button>
+      <button class="mk-clear-btn" id="mkClearBtn"
+              data-es="Limpiar" data-en="Clear">Limpiar</button>
     </div>
   </div>
 
+  <!-- GRID -->
   <div class="mk-grid" id="mkGrid">
     <div class="mk-status" id="mkStatus">
       Cargando especialistas…<small>un momento</small>
     </div>
   </div>
 
-</div>
+</div><!-- /#mk-root -->
 
 <script>
-// ============================================================
-// CONFIGURA AQUÍ TU GOOGLE SHEET
-// ============================================================
-var MK_SHEET_ID   = '1PDn1brjIaQuOipDRfN82xOAG3TSVu96TLcKEr4vYuEo';   // ID de tu Google Sheet
-var MK_SHEET_NAME = 'Especialistas';        // Nombre de la pestaña
+/* ============================================================
+   CONFIGURACIÓN — SOLO CAMBIA ESTAS DOS LÍNEAS
+   ============================================================ */
+var MK_SHEET_ID   = 'TU_SHEET_ID_AQUI';  // ID de tu Google Sheet
+var MK_SHEET_NAME = 'Especialistas';       // Nombre exacto de la pestaña
 
-// ============================================================
-// NO TOQUES NADA ABAJO
-// ============================================================
-var MK_COLORS = ['t-violet','t-teal','t-rose','t-amber','t-sky','t-gold'];
-var MK_AVAIL  = {
+/* ============================================================
+   DATOS DE EJEMPLO — se usan mientras configuras el Sheet
+   Cuando el Sheet funcione, estos se ignoran automáticamente
+   ============================================================ */
+var MK_DEMO = [
+  {nombre_es:'Isolde',nombre_en:'Isolde',
+   especialidad_es:'Tarot · Guía Intuitiva',especialidad_en:'Tarot · Intuitive Guide',
+   bio_es:'Con más de 15 años leyendo el tarot, Isolde mezcla simbolismo antiguo con sabiduría emocional moderna. Directa y compasiva.',
+   bio_en:'With over 15 years reading tarot, Isolde blends ancient symbolism with modern emotional wisdom. Direct yet compassionate.',
+   foto_url:'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',
+   idiomas:'ES · EN',rating:5,resenas:134,disponibilidad:'today',
+   tecnica:'tarot',enfoque:'amor espiritualidad',tags:'Tarot,Intuición,Amor'},
+  {nombre_es:'Luna',nombre_en:'Luna',
+   especialidad_es:'Astrología · Sanación Energética',especialidad_en:'Astrology · Energy Healing',
+   bio_es:'Luna traduce el movimiento cósmico en comprensión práctica. Especializada en tránsitos y ciclos lunares.',
+   bio_en:'Luna translates cosmic movement into practical understanding. Specialized in transits and lunar cycles.',
+   foto_url:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',
+   idiomas:'ES · EN',rating:5,resenas:89,disponibilidad:'today',
+   tecnica:'astrologia',enfoque:'espiritualidad proposito',tags:'Astrología,Energía,Ciclos'},
+  {nombre_es:'Margarita',nombre_en:'Margarita',
+   especialidad_es:'Registros Akásicos · Propósito del Alma',especialidad_en:'Akashic Records · Soul Purpose',
+   bio_es:'Margarita te ayuda a explorar la memoria profunda de tu alma, revelando patrones de vidas pasadas.',
+   bio_en:'Margarita helps you explore the deep memory of your soul, revealing patterns from past lives.',
+   foto_url:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',
+   idiomas:'ES',rating:5,resenas:62,disponibilidad:'today',
+   tecnica:'akashic',enfoque:'espiritualidad proposito',tags:'Akásicos,Alma,Perdón'},
+  {nombre_es:'Adrian',nombre_en:'Adrian',
+   especialidad_es:'Life Coach · Mentoría de Manifestación',especialidad_en:'Life Coach · Manifestation Mentor',
+   bio_es:'Estratega con corazón espiritual. Combina coaching, PNL y trabajo intuitivo para atraer abundancia.',
+   bio_en:'Strategist with a spiritual heart. Combines coaching, NLP and intuitive work to attract abundance.',
+   foto_url:'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',
+   idiomas:'ES · EN',rating:4,resenas:47,disponibilidad:'today',
+   tecnica:'coaching',enfoque:'carrera proposito',tags:'Coaching,NLP,Abundancia'},
+  {nombre_es:'Petra',nombre_en:'Petra',
+   especialidad_es:'Numerología · Armonía Interior',especialidad_en:'Numerology · Inner Harmony',
+   bio_es:'Petra descifra el lenguaje de los números para revelar tu camino de vida y tu tiempo personal.',
+   bio_en:'Petra decodes the language of numbers to reveal your life path and personal timing.',
+   foto_url:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',
+   idiomas:'ES',rating:5,resenas:78,disponibilidad:'today',
+   tecnica:'numerologia',enfoque:'amor carrera',tags:'Numerología,Camino,Decisiones'},
+  {nombre_es:'Jimena',nombre_en:'Jimena',
+   especialidad_es:'Meditación · Equilibrio Energético',especialidad_en:'Meditation · Energy Balance',
+   bio_es:'Jimena enseña la presencia a través de la respiración y la alineación energética suave.',
+   bio_en:'Jimena teaches presence through breathwork and gentle energy alignment.',
+   foto_url:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80',
+   booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',
+   idiomas:'ES · EN',rating:5,resenas:55,disponibilidad:'today',
+   tecnica:'meditacion',enfoque:'salud espiritualidad',tags:'Meditación,Energía,Calma'}
+];
+
+/* ============================================================
+   ENGINE — no tocar
+   ============================================================ */
+var MK_COLORS=['t-violet','t-teal','t-rose','t-amber','t-sky','t-gold'];
+var MK_AVAIL={
   es:{today:'Disponible hoy',week:'Esta semana',none:'Sin citas'},
-  en:{today:'Available today',week:'This week', none:'Unavailable'}
+  en:{today:'Available today',week:'This week',none:'Unavailable'}
 };
-var MK_BOOK = {es:'Reservar sesión', en:'Book a session'};
-
-var mkLang    = localStorage.getItem('mk_lang') || 'es';
-var mkData    = [];
-var mkFilters = {tecnica:'all', idioma:'all', enfoque:'all'};
-var mkSearch  = '';
+var MK_BOOK={es:'Reservar sesión',en:'Book a session'};
+var mkLang=localStorage.getItem('mk_lang')||'es';
+var mkData=[];
+var mkFilters={tecnica:'all',idioma:'all',enfoque:'all'};
+var mkSearch='';
 
 function mkStars(r){
-  var n = Math.min(5,Math.max(0,Math.round(parseFloat(r)||5)));
-  return '&#9733;'.repeat(n) + '<span style="opacity:.2">&#9733;</span>'.repeat(5-n);
+  var n=Math.min(5,Math.max(0,Math.round(parseFloat(r)||5)));
+  return '★'.repeat(n)+'<span style="opacity:.2">★</span>'.repeat(5-n);
 }
 
 function mkCard(sp){
-  var lang  = mkLang;
-  var name  = (lang==='en'?sp['nombre_en']:sp['nombre_es'])    || sp['nombre_es']      || '';
-  var spec  = (lang==='en'?sp['especialidad_en']:sp['especialidad_es']) || sp['especialidad_es'] || '';
-  var bio   = (lang==='en'?sp['bio_en']:sp['bio_es'])          || sp['bio_es']         || '';
-  var photo = sp['foto_url']    || 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80';
-  var book  = sp['booking_url'] || '#';
-  var langs = sp['idiomas']     || 'ES';
-  var rat   = parseFloat(sp['rating'])  || 5;
-  var revs  = parseInt(sp['resenas'])   || 0;
-  var avail = sp['disponibilidad']      || 'today';
-  var tags  = (sp['tags']||'').split(',').map(function(t){return t.trim();}).filter(Boolean);
-  var tec   = (sp['tecnica']||'').toLowerCase().trim();
-  var enf   = (sp['enfoque']||'').toLowerCase().trim();
-  var langA = langs.toLowerCase()
+  var name =(mkLang==='en'?sp.nombre_en:sp.nombre_es)||sp.nombre_es||'';
+  var spec =(mkLang==='en'?sp.especialidad_en:sp.especialidad_es)||sp.especialidad_es||'';
+  var bio  =(mkLang==='en'?sp.bio_en:sp.bio_es)||sp.bio_es||'';
+  var photo=sp.foto_url||'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80';
+  var book =sp.booking_url||'#';
+  var langs=sp.idiomas||'ES';
+  var rat  =parseFloat(sp.rating)||5;
+  var revs =parseInt(sp.resenas)||0;
+  var avail=sp.disponibilidad||'today';
+  var tags =(sp.tags||'').split(',').map(function(t){return t.trim();}).filter(Boolean);
+  var tec  =(sp.tecnica||'').toLowerCase().trim();
+  var enf  =(sp.enfoque||'').toLowerCase().trim();
+  var langA=langs.toLowerCase()
     .replace(/espa[ñn]ol/g,'es').replace(/ingl[eé]s|english/g,'en').replace(/portugu[eé]s/g,'pt');
-
-  var tagsH = tags.slice(0,3).map(function(t,i){
+  var tagsH=tags.slice(0,3).map(function(t,i){
     return '<span class="mk-tag '+MK_COLORS[i%MK_COLORS.length]+'">'+t+'</span>';
   }).join('');
-  var availL = (MK_AVAIL[lang]||MK_AVAIL.es)[avail]||MK_AVAIL.es.today;
-  var bookL  = MK_BOOK[lang];
+  var availL=(MK_AVAIL[mkLang]||MK_AVAIL.es)[avail]||MK_AVAIL.es.today;
+  var bookL=MK_BOOK[mkLang];
+  var searchKey=(name+' '+spec+' '+tec+' '+enf).toLowerCase();
 
-  return '<div class="mk-card" data-tecnica="'+tec+'" data-enfoque="'+enf+'" data-idioma="'+langA+'" data-name="'+name.toLowerCase()+' '+spec.toLowerCase()+'">'
-    +'<img class="mk-card-img" src="'+photo+'" alt="'+name+'" onerror="this.src=\'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80\'">'
+  return '<div class="mk-card" data-tec="'+tec+'" data-enf="'+enf+'" data-idm="'+langA+'" data-key="'+searchKey+'">'
+    +'<img class="mk-card-img" src="'+photo+'" alt="'+name+'" '
+    +'onerror="this.src=\'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80\'">'
     +'<div class="mk-card-overlay"></div>'
     +'<div class="mk-card-top">'
     +'<div class="mk-avail"><div class="mk-avail-dot"></div>'+availL+'</div>'
@@ -137,110 +383,106 @@ function mkCard(sp){
     +'<div class="mk-card-name">'+name+'</div>'
     +'<div class="mk-card-bio">'+bio+'</div>'
     +'<div class="mk-stars"><span class="mk-stars-gold">'+mkStars(rat)+'</span>'
-    +'<span class="mk-stars-ct">'+rat.toFixed(1)+' ('+revs+')</span></div>'
+    +'<span class="mk-stars-ct"> '+rat.toFixed(1)+' ('+revs+')</span></div>'
     +'<div class="mk-card-tags">'+tagsH+'</div>'
-    +'<a class="mk-cta" href="'+book+'" target="_blank">'+bookL+' <span class="mk-cta-arr">&#8594;</span></a>'
+    +'<a class="mk-cta" href="'+book+'" target="_blank">'+bookL+' <span class="mk-cta-arr">→</span></a>'
     +'</div></div>';
 }
 
 function mkRender(){
-  var grid   = document.getElementById('mkGrid');
-  var status = document.getElementById('mkStatus');
+  var grid=document.getElementById('mkGrid');
+  var status=document.getElementById('mkStatus');
   grid.querySelectorAll('.mk-card').forEach(function(c){c.remove();});
-
-  var vis = 0;
+  var vis=0;
   mkData.forEach(function(sp){
-    var el = document.createElement('div');
-    el.innerHTML = mkCard(sp);
-    var card = el.firstElementChild;
-    var tec  = card.dataset.tecnica||'';
-    var enf  = card.dataset.enfoque||'';
-    var idm  = card.dataset.idioma||'';
-    var nm   = card.dataset.name||'';
-    var ok =
-      (mkFilters.tecnica==='all'||tec.includes(mkFilters.tecnica)) &&
-      (mkFilters.idioma ==='all'||idm.includes(mkFilters.idioma))  &&
-      (mkFilters.enfoque==='all'||enf.includes(mkFilters.enfoque)) &&
-      (!mkSearch||nm.includes(mkSearch));
-    if(!ok) card.classList.add('hidden'); else vis++;
-    grid.insertBefore(card, status);
+    var wrap=document.createElement('div');
+    wrap.innerHTML=mkCard(sp);
+    var card=wrap.firstElementChild;
+    var tec=card.dataset.tec||'';
+    var enf=card.dataset.enf||'';
+    var idm=card.dataset.idm||'';
+    var key=card.dataset.key||'';
+    var ok=(mkFilters.tecnica==='all'||tec.includes(mkFilters.tecnica))
+      &&(mkFilters.idioma==='all'||idm.includes(mkFilters.idioma))
+      &&(mkFilters.enfoque==='all'||enf.includes(mkFilters.enfoque))
+      &&(!mkSearch||key.includes(mkSearch));
+    if(!ok)card.classList.add('hidden');else vis++;
+    grid.insertBefore(card,status);
   });
-
-  document.getElementById('mkVisCount').textContent = vis;
+  document.getElementById('mkVisCount').textContent=vis;
   if(vis===0){
     status.style.display='block';
-    status.innerHTML = (mkLang==='en'?'No results':'Sin resultados')
+    status.innerHTML=(mkLang==='en'?'No results':'Sin resultados')
       +'<small>'+(mkLang==='en'?'Try different filters':'Prueba otros filtros')+'</small>';
-  } else {
+  }else{
     status.style.display='none';
   }
   mkApplyLang();
 }
 
 function mkSetLang(l){
-  mkLang = l;
-  localStorage.setItem('mk_lang',l);
-  document.querySelectorAll('#mk-root .mk-lang-btn').forEach(function(b){
-    b.classList.toggle('on', b.dataset.lang===l);
-  });
+  mkLang=l;localStorage.setItem('mk_lang',l);
+  document.querySelectorAll('.mk-lang-btn').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
   mkRender();
 }
 
 function mkApplyLang(){
-  document.querySelectorAll('#mk-root [data-es]').forEach(function(el){
-    var txt = el.getAttribute('data-'+mkLang);
-    if(!txt) return;
-    if(el.innerHTML&&el.innerHTML.indexOf('<')>-1) el.innerHTML=txt;
-    else el.textContent=txt;
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var txt=el.getAttribute('data-'+mkLang);
+    if(!txt)return;
+    if(el.tagName==='INPUT'){el.placeholder=txt;}
+    else if(txt.indexOf('<')>-1){el.innerHTML=txt;}
+    else{el.textContent=txt;}
   });
   var s=document.getElementById('mkSearch');
-  if(s) s.placeholder=s.getAttribute('data-ph-'+mkLang)||s.placeholder;
+  if(s)s.placeholder=s.getAttribute('data-ph-'+mkLang)||s.placeholder;
 }
 
 // Pills
-document.querySelectorAll('#mk-root .mk-pill').forEach(function(btn){
+document.querySelectorAll('.mk-pill').forEach(function(btn){
   btn.addEventListener('click',function(){
-    var f=btn.dataset.f, v=btn.dataset.v;
+    var f=btn.dataset.f,v=btn.dataset.v;
     mkFilters[f]=v;
-    document.querySelectorAll('#mk-root .mk-pill[data-f="'+f+'"]').forEach(function(b){b.classList.remove('on');});
+    document.querySelectorAll('.mk-pill[data-f="'+f+'"]').forEach(function(b){b.classList.remove('on');});
     btn.classList.add('on');
     mkRender();
   });
 });
 document.getElementById('mkSearch').addEventListener('input',function(){
-  mkSearch=this.value.trim().toLowerCase(); mkRender();
+  mkSearch=this.value.trim().toLowerCase();mkRender();
 });
 document.getElementById('mkClearBtn').addEventListener('click',function(){
   Object.keys(mkFilters).forEach(function(k){mkFilters[k]='all';});
-  mkSearch='';
-  document.getElementById('mkSearch').value='';
-  document.querySelectorAll('#mk-root .mk-pill').forEach(function(b){
-    b.classList.toggle('on',b.dataset.v==='all');
-  });
+  mkSearch='';document.getElementById('mkSearch').value='';
+  document.querySelectorAll('.mk-pill').forEach(function(b){b.classList.toggle('on',b.dataset.v==='all');});
   mkRender();
 });
 
-// Fetch Google Sheets
+// Fetch Google Sheets — si falla usa datos demo
 function mkFetch(){
+  if(MK_SHEET_ID==='TU_SHEET_ID_AQUI'){
+    mkData=MK_DEMO;mkRender();return;
+  }
   var url='https://docs.google.com/spreadsheets/d/'+MK_SHEET_ID
     +'/gviz/tq?tqx=out:json&sheet='+encodeURIComponent(MK_SHEET_NAME);
   fetch(url).then(function(r){return r.text();}).then(function(text){
     var m=text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
-    if(!m){throw new Error('No data');}
+    if(!m)throw new Error('no data');
     var json=JSON.parse(m[1]);
     var cols=json.table.cols.map(function(c){return c.label.trim();});
     mkData=json.table.rows.map(function(row){
       var obj={};
-      cols.forEach(function(col,i){obj[col]=row.c[i]?(row.c[i].v??''):'';});
+      cols.forEach(function(col,i){obj[col]=row.c[i]?(row.c[i].v!=null?row.c[i].v:''):'';});
       return obj;
     }).filter(function(r){return r['nombre_es'];});
     mkRender();
   }).catch(function(){
-    document.getElementById('mkStatus').innerHTML=
-      'No se pudo cargar la lista<small>Verifica que la hoja de Google Sheets sea pública</small>';
+    mkData=MK_DEMO;mkRender();
   });
 }
 
 mkApplyLang();
 mkFetch();
 </script>
+</body>
+</html>
