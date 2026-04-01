@@ -189,7 +189,7 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
 </div>
 
 <script>
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1PDn1brjIaQuOipDRfN82xOAG3TSVu96TLcKEr4vYuEo/gviz/tq?tqx=out:csv&sheet=Hoja%201';
+const SHEET_JSON_URL = 'https://opensheet.elk.sh/1PDn1brjIaQuOipDRfN82xOAG3TSVu96TLcKEr4vYuEo/Hoja%201';
 
 let allSpecialists = [];
 let activeCat = 'all';
@@ -460,12 +460,14 @@ function setLang(lang){
 
 async function loadSpecialists(){
   try{
-    const res=await fetch(SHEET_CSV_URL);
+    const res=await fetch(SHEET_JSON_URL);
     if(!res.ok) throw new Error('Sheet not accessible');
-    const text=await res.text();
-    allSpecialists=parseCSV(text);
+    const data=await res.json();
+    // opensheet returns array of objects with column headers as keys
+    allSpecialists=data.filter(r=>r.nombre_es&&r.nombre_es.trim());
     render();
   } catch(e){
+    console.warn('Sheet fetch failed, using demo data:', e);
     allSpecialists=[
       {nombre_es:'Isolde',nombre_en:'Isolde',especialidad_es:'Tarot · Guía Intuitiva',especialidad_en:'Tarot · Intuitive Guide',bio_es:'Con más de 15 años leyendo el tarot, Isolde mezcla simbolismo antiguo con sabiduría emocional moderna.',bio_en:'With over 15 years reading tarot, Isolde blends ancient symbolism with modern emotional wisdom.',foto_url:'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'5',resenas:'134',categoria:'divination',subcategorias:'tarot,oracle_cards',precio:'95'},
       {nombre_es:'Luna',nombre_en:'Luna',especialidad_es:'Astrología · Sanación Energética',especialidad_en:'Astrology · Energy Healing',bio_es:'Luna traduce el movimiento cósmico en comprensión práctica.',bio_en:'Luna translates cosmic movement into practical understanding.',foto_url:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES · EN',rating:'5',resenas:'89',categoria:'divination',subcategorias:'tarot,i_ching',precio:'120'},
@@ -475,7 +477,7 @@ async function loadSpecialists(){
       {nombre_es:'Jimena',nombre_en:'Jimena',especialidad_es:'Meditación · Equilibrio Energético',especialidad_en:'Meditation · Energy Balance',bio_es:'Jimena enseña la presencia a través de la respiración y la alineación energética.',bio_en:'Jimena teaches presence through breathwork and gentle energy alignment.',foto_url:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES · EN',rating:'5',resenas:'55',categoria:'healing',subcategorias:'reiki,chakra_balancing,energy_healing',precio:'85'},
     ];
     render();
-    console.log('Using demo data — update SHEET_CSV_URL with published CSV URL');
+    console.log('Using demo data. Check SHEET_JSON_URL and Sheet permissions.');
   }
 }
 
