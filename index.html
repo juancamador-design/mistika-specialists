@@ -18,12 +18,14 @@
 html{scroll-behavior:smooth;}
 body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);font-size:15px;line-height:1.6;overflow-x:hidden;}
 
+/* LANG BAR */
 .lang-bar{background:var(--violet);padding:8px 40px;display:flex;justify-content:flex-end;align-items:center;gap:10px;}
 .lang-note{font-size:12px;color:rgba(255,255,255,0.65);}
 .lang-tgl{display:flex;background:rgba(255,255,255,0.12);border-radius:100px;overflow:hidden;border:1px solid rgba(255,255,255,0.2);}
 .lb{padding:5px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);cursor:pointer;border:none;background:transparent;transition:all .2s;}
 .lb.active{background:var(--gold);color:var(--deep);}
 
+/* HERO */
 .hero{background:linear-gradient(135deg,#f5f0ea 0%,#ede8f5 55%,#f0ece8 100%);padding:64px 40px 52px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:360px;height:360px;border-radius:50%;background:rgba(124,111,160,0.06);pointer-events:none;}
 .hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
@@ -35,68 +37,42 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
 .hero-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:520px;margin:0 auto;}
 
 /* FILTERS */
-.filters-wrap{background:white;padding:18px 40px;border-bottom:1px solid var(--fog);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(58,45,140,0.06);}
-.filters-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
-.filter-row{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;}
-.filter-label{font-size:11px;font-weight:500;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;min-width:80px;padding-top:8px;}
-.filter-pills{display:flex;gap:7px;flex-wrap:wrap;}
+.filters-wrap{background:white;padding:20px 40px;border-bottom:1px solid var(--fog);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(58,45,140,0.06);}
+.filters-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.filter-label{font-size:11px;font-weight:500;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;min-width:80px;}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;}
 .fpill{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--fog);background:var(--ash);color:var(--stone);transition:all .2s;white-space:nowrap;}
 .fpill:hover{border-color:var(--vm);color:var(--violet);}
 .fpill.active{background:var(--violet);color:white;border-color:var(--violet);}
 .fpill.all.active{background:var(--deep);border-color:var(--deep);}
 
-/* Sub-filter row — appears dynamically */
-.subfilter-row{display:none;align-items:flex-start;gap:10px;flex-wrap:wrap;padding:10px 0 2px;border-top:1px solid var(--fog);margin-top:2px;}
-.subfilter-row.visible{display:flex;}
-.sub-pill{padding:5px 12px;border-radius:100px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--fog);background:white;color:var(--stone);transition:all .2s;white-space:nowrap;}
-.sub-pill:hover{border-color:var(--gold);color:var(--gold);}
-.sub-pill.active{background:var(--gold);color:var(--deep);border-color:var(--gold);}
-.sub-pill.all-sub.active{background:var(--vm);color:white;border-color:var(--vm);}
-
-/* Lang filter */
-.filter-row.lang-row{border-top:1px solid var(--fog);padding-top:10px;margin-top:2px;}
-
 /* GRID */
-.grid-wrap{max-width:1100px;margin:0 auto;padding:40px 40px;}
-.results-info{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:8px;}
-.results-count{font-size:13px;color:var(--stone);}
-.active-filter-tag{display:inline-flex;align-items:center;gap:6px;background:var(--vp);border:1px solid rgba(58,45,140,0.15);border-radius:100px;padding:4px 12px;font-size:12px;color:var(--violet);}
-.aft-x{cursor:pointer;font-size:14px;line-height:1;color:var(--vm);}
-.aft-x:hover{color:var(--violet);}
-
-/* Section label for priority vs rest */
-.section-divider{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:8px 0 4px;}
-.sd-line{flex:1;height:1px;background:var(--fog);}
-.sd-label{font-size:11px;font-weight:500;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
-
-.specialists-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.grid-wrap{max-width:1100px;margin:0 auto;padding:48px 40px;}
+.results-count{font-size:13px;color:var(--stone);margin-bottom:24px;}
+.specialists-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 
 /* CARD */
 .spec-card{background:white;border-radius:var(--rl);border:1px solid var(--fog);overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s;position:relative;}
 .spec-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(58,45,140,0.12);border-color:var(--vm);}
-.spec-card.priority{border-color:rgba(201,168,76,0.4);}
-.spec-card.priority::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);z-index:1;}
 .card-photo{width:100%;height:200px;object-fit:cover;object-position:center top;display:block;background:var(--vs);}
-.card-cat-badge{position:absolute;top:16px;left:12px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;backdrop-filter:blur(8px);}
-.card-match-badge{position:absolute;top:16px;right:12px;background:var(--gold);color:var(--deep);padding:4px 10px;border-radius:100px;font-size:10px;font-weight:500;}
+.card-cat-badge{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;backdrop-filter:blur(8px);}
 .card-body{padding:20px;}
 .card-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--deep);margin-bottom:4px;}
 .card-specialty{font-size:12px;color:var(--vm);margin-bottom:10px;font-weight:500;}
 .card-bio{font-size:13px;color:var(--stone);line-height:1.6;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.card-services{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
-.svc-tag{padding:3px 8px;border-radius:100px;font-size:10px;background:var(--vp);color:var(--violet);border:1px solid rgba(58,45,140,0.1);}
-.svc-tag.matched{background:rgba(201,168,76,0.12);color:#854F0B;border-color:rgba(201,168,76,0.3);font-weight:500;}
-.card-meta{display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;}
+.card-meta{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
 .meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--stone);}
+.meta-item svg{width:13px;height:13px;opacity:0.6;}
 .card-langs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
-.lang-tag{padding:3px 8px;border-radius:100px;font-size:10px;font-weight:500;background:var(--ash);color:var(--stone);border:1px solid var(--fog);}
+.lang-tag{padding:3px 8px;border-radius:100px;font-size:10px;font-weight:500;background:var(--vp);color:var(--violet);border:1px solid rgba(58,45,140,0.12);}
 .card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--fog);}
 .card-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--deep);}
-.card-price span{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--stone);margin-left:2px;}
+.card-price span{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--stone);font-weight:400;margin-left:2px;}
 .card-booking{background:var(--violet);color:white;font-size:12px;font-weight:500;padding:9px 18px;border-radius:100px;text-decoration:none;transition:opacity .2s,transform .15s;}
 .card-booking:hover{opacity:.88;transform:translateY(-1px);}
 
-/* Cat badge colors */
+/* Category badge colors */
 .cat-divination{background:rgba(124,111,160,0.15);color:#3a2d8c;}
 .cat-records{background:rgba(58,45,140,0.12);color:#1a1035;}
 .cat-coaching{background:rgba(201,168,76,0.18);color:#854F0B;}
@@ -106,12 +82,17 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
 .cat-cleansing{background:rgba(24,95,165,0.12);color:#0C447C;}
 .cat-rituals{background:rgba(216,90,48,0.15);color:#712B13;}
 
-.empty{text-align:center;padding:80px 20px;color:var(--stone);grid-column:1/-1;}
+/* EMPTY STATE */
+.empty{text-align:center;padding:80px 20px;color:var(--stone);}
 .empty-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:8px;}
-.loading{text-align:center;padding:80px;color:var(--stone);font-size:14px;grid-column:1/-1;}
+
+/* LOADING */
+.loading{text-align:center;padding:80px;color:var(--stone);font-size:14px;}
 .spinner{width:32px;height:32px;border:2px solid var(--fog);border-top-color:var(--violet);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
@@ -125,63 +106,52 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge"><span class="badge-dot"></span><span data-en="Carefully selected guides" data-es="Guías cuidadosamente seleccionados">Carefully selected guides</span></div>
     <h1 class="hero-title" data-en="Meet the specialists<br>who will <em>guide your path</em>" data-es="Conoce a los especialistas<br>que <em>guiarán tu camino</em>">Meet the specialists<br>who will <em>guide your path</em></h1>
-    <p class="hero-sub" data-en="Every guide in the Mistika Collective has been carefully selected for their integrity, wisdom, and genuine dedication to your wellbeing. Filter by the exact service you are looking for." data-es="Cada guía ha sido seleccionado por su integridad y sabiduría. Filtra por el servicio exacto que buscas.">Every guide in the Mistika Collective has been carefully selected for their integrity, wisdom, and genuine dedication to your wellbeing. Filter by the exact service you are looking for.</p>
+    <p class="hero-sub" data-en="Every guide in the Mistika Collective has been carefully selected for their integrity, wisdom, and genuine dedication to your wellbeing." data-es="Cada guía del Colectivo Mistika ha sido cuidadosamente seleccionado por su integridad, sabiduría y dedicación genuina a tu bienestar.">Every guide in the Mistika Collective has been carefully selected for their integrity, wisdom, and genuine dedication to your wellbeing.</p>
   </div>
 </section>
 
+<!-- FILTERS -->
 <div class="filters-wrap">
   <div class="filters-inner">
-
-    <!-- CATEGORY ROW -->
     <div class="filter-row">
-      <span class="filter-label" data-en="Category" data-es="Categoría">Category</span>
+      <span class="filter-label" data-en="Service" data-es="Servicio">Service</span>
       <div class="filter-pills" id="cat-filters">
-        <span class="fpill all active" data-cat="all" onclick="selectCat('all',this)" data-en="All" data-es="Todos">All</span>
-        <span class="fpill" data-cat="divination" onclick="selectCat('divination',this)" data-en="🔮 Divination" data-es="🔮 Adivinación">🔮 Divination</span>
-        <span class="fpill" data-cat="records" onclick="selectCat('records',this)" data-en="📜 Records" data-es="📜 Registros">📜 Records</span>
-        <span class="fpill" data-cat="coaching" onclick="selectCat('coaching',this)" data-en="🧠 Coaching" data-es="🧠 Coaching">🧠 Coaching</span>
-        <span class="fpill" data-cat="numerology" onclick="selectCat('numerology',this)" data-en="🔢 Numerology" data-es="🔢 Numerología">🔢 Numerology</span>
-        <span class="fpill" data-cat="healing" onclick="selectCat('healing',this)" data-en="✨ Energy Healing" data-es="✨ Sanación">✨ Energy Healing</span>
-        <span class="fpill" data-cat="mediumship" onclick="selectCat('mediumship',this)" data-en="👁️ Mediumship" data-es="👁️ Mediumnidad">👁️ Mediumship</span>
-        <span class="fpill" data-cat="cleansing" onclick="selectCat('cleansing',this)" data-en="🧿 Cleansing" data-es="🧿 Limpieza">🧿 Cleansing</span>
-        <span class="fpill" data-cat="rituals" onclick="selectCat('rituals',this)" data-en="🔥 Rituals" data-es="🔥 Rituales">🔥 Rituals</span>
+        <span class="fpill all active" data-cat="all" onclick="filter('cat',this)" data-en="All" data-es="Todos">All</span>
+        <span class="fpill" data-cat="divination" onclick="filter('cat',this)" data-en="Divination" data-es="Adivinación">Divination</span>
+        <span class="fpill" data-cat="records" onclick="filter('cat',this)" data-en="Records & Consciousness" data-es="Registros y Conciencia">Records & Consciousness</span>
+        <span class="fpill" data-cat="coaching" onclick="filter('cat',this)" data-en="Spiritual Coaching" data-es="Coaching Espiritual">Spiritual Coaching</span>
+        <span class="fpill" data-cat="numerology" onclick="filter('cat',this)" data-en="Numerology" data-es="Numerología">Numerology</span>
+        <span class="fpill" data-cat="healing" onclick="filter('cat',this)" data-en="Energy Healing" data-es="Sanación Energética">Energy Healing</span>
+        <span class="fpill" data-cat="mediumship" onclick="filter('cat',this)" data-en="Mediumship" data-es="Mediumnidad">Mediumship</span>
+        <span class="fpill" data-cat="cleansing" onclick="filter('cat',this)" data-en="Cleansing & Protection" data-es="Limpieza y Protección">Cleansing & Protection</span>
+        <span class="fpill" data-cat="rituals" onclick="filter('cat',this)" data-en="Rituals & Manifestation" data-es="Rituales y Manifestación">Rituals & Manifestation</span>
       </div>
     </div>
-
-    <!-- SUBCATEGORY ROW — dynamic -->
-    <div class="subfilter-row" id="subfilter-row">
-      <span class="filter-label" data-en="Service" data-es="Servicio">Service</span>
-      <div class="filter-pills" id="sub-filters"></div>
-    </div>
-
-    <!-- LANGUAGE ROW -->
-    <div class="filter-row lang-row">
+    <div class="filter-row">
       <span class="filter-label" data-en="Language" data-es="Idioma">Language</span>
       <div class="filter-pills" id="lang-filters">
-        <span class="fpill all active" data-lang="all" onclick="selectLang('all',this)" data-en="All" data-es="Todos">All</span>
-        <span class="fpill" data-lang="EN" onclick="selectLang('EN',this)">English</span>
-        <span class="fpill" data-lang="ES" onclick="selectLang('ES',this)">Español</span>
-        <span class="fpill" data-lang="PT" onclick="selectLang('PT',this)">Português</span>
-        <span class="fpill" data-lang="FR" onclick="selectLang('FR',this)">Français</span>
-        <span class="fpill" data-lang="IT" onclick="selectLang('IT',this)">Italiano</span>
-        <span class="fpill" data-lang="DE" onclick="selectLang('DE',this)">Deutsch</span>
+        <span class="fpill all active" data-lang="all" onclick="filter('lang',this)" data-en="All" data-es="Todos">All</span>
+        <span class="fpill" data-lang="EN" onclick="filter('lang',this)">English</span>
+        <span class="fpill" data-lang="ES" onclick="filter('lang',this)">Español</span>
+        <span class="fpill" data-lang="PT" onclick="filter('lang',this)">Português</span>
+        <span class="fpill" data-lang="FR" onclick="filter('lang',this)">Français</span>
+        <span class="fpill" data-lang="IT" onclick="filter('lang',this)">Italiano</span>
+        <span class="fpill" data-lang="DE" onclick="filter('lang',this)">Deutsch</span>
       </div>
     </div>
-
   </div>
 </div>
 
+<!-- GRID -->
 <div class="grid-wrap">
-  <div class="results-info">
-    <div class="results-count" id="results-count"></div>
-    <div id="active-filter-display"></div>
-  </div>
+  <div class="results-count" id="results-count"></div>
   <div class="specialists-grid" id="specialists-grid">
-    <div class="loading">
+    <div class="loading" style="grid-column:1/-1;">
       <div class="spinner"></div>
       <span data-en="Loading specialists..." data-es="Cargando especialistas...">Loading specialists...</span>
     </div>
@@ -189,133 +159,95 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
 </div>
 
 <script>
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1PDn1brjIaQuOipDRfN82xOAG3TSVu96TLcKEr4vYuEo/gviz/tq?tqx=out:csv&sheet=Hoja%201';
 
 let allSpecialists = [];
 let activeCat = 'all';
-let activeSub = 'all';
 let activeLang = 'all';
 let currentLang = 'en';
 
-// All subcategories per category — bilingual labels
-const SUBCATS = {
-  divination: [
-    {slug:'tarot', en:'Tarot Reading', es:'Lectura de Tarot'},
-    {slug:'oracle_cards', en:'Oracle Cards', es:'Cartas Oráculo'},
-    {slug:'pendulum', en:'Pendulum Reading', es:'Lectura de Péndulo'},
-    {slug:'rune_reading', en:'Rune Reading', es:'Lectura de Runas'},
-    {slug:'i_ching', en:'I Ching', es:'I Ching'},
-  ],
-  records: [
-    {slug:'akashic_records', en:'Akashic Records', es:'Registros Akáshicos'},
-    {slug:'past_life', en:'Past Life Reading', es:'Vidas Pasadas'},
-    {slug:'soul_contract', en:'Soul Contract', es:'Contrato del Alma'},
-  ],
-  coaching: [
-    {slug:'spiritual_coaching', en:'Spiritual Coaching', es:'Coaching Espiritual'},
-    {slug:'intuitive_coaching', en:'Intuitive Coaching', es:'Coaching Intuitivo'},
-    {slug:'life_purpose', en:'Life Purpose', es:'Propósito de Vida'},
-    {slug:'shadow_work', en:'Shadow Work', es:'Trabajo de Sombra'},
-    {slug:'manifestation_coaching', en:'Manifestation Coaching', es:'Coaching de Manifestación'},
-  ],
-  numerology: [
-    {slug:'life_path', en:'Life Path Analysis', es:'Análisis de Camino de Vida'},
-    {slug:'name_destiny', en:'Name & Destiny', es:'Nombre y Destino'},
-    {slug:'personal_year', en:'Personal Year Forecast', es:'Pronóstico del Año Personal'},
-  ],
-  healing: [
-    {slug:'reiki', en:'Reiki', es:'Reiki'},
-    {slug:'chakra_balancing', en:'Chakra Balancing', es:'Equilibrio de Chakras'},
-    {slug:'energy_healing', en:'Energy Healing', es:'Sanación Energética'},
-    {slug:'distance_healing', en:'Distance Healing', es:'Sanación a Distancia'},
-  ],
-  mediumship: [
-    {slug:'medium_readings', en:'Medium Readings', es:'Lecturas de Médium'},
-    {slug:'spirit_communication', en:'Spirit Communication', es:'Comunicación Espiritual'},
-    {slug:'ancestral_messages', en:'Ancestral Messages', es:'Mensajes Ancestrales'},
-    {slug:'angel_channeling', en:'Angel Channeling', es:'Canalización Angelical'},
-  ],
-  cleansing: [
-    {slug:'energy_cleansing', en:'Energy Cleansing', es:'Limpieza Energética'},
-    {slug:'aura_cleansing', en:'Aura Cleansing', es:'Limpieza de Aura'},
-    {slug:'cord_cutting', en:'Cord Cutting', es:'Corte de Cordones'},
-    {slug:'protection_rituals', en:'Protection Rituals', es:'Rituales de Protección'},
-  ],
-  rituals: [
-    {slug:'abundance_rituals', en:'Abundance Rituals', es:'Rituales de Abundancia'},
-    {slug:'road_opening', en:'Road Opening Rituals', es:'Rituales Abre Caminos'},
-  ],
-};
-
 const CAT_LABELS = {
-  en:{divination:'Divination',records:'Records & Consciousness',coaching:'Spiritual Coaching',numerology:'Numerology',healing:'Energy Healing',mediumship:'Mediumship',cleansing:'Cleansing & Protection',rituals:'Rituals & Manifestation'},
-  es:{divination:'Adivinación',records:'Registros y Conciencia',coaching:'Coaching Espiritual',numerology:'Numerología',healing:'Sanación Energética',mediumship:'Mediumnidad',cleansing:'Limpieza y Protección',rituals:'Rituales y Manifestación'},
+  en: {
+    divination: 'Divination',
+    records: 'Records & Consciousness',
+    coaching: 'Spiritual Coaching',
+    numerology: 'Numerology',
+    healing: 'Energy Healing',
+    mediumship: 'Mediumship',
+    cleansing: 'Cleansing & Protection',
+    rituals: 'Rituals & Manifestation'
+  },
+  es: {
+    divination: 'Adivinación',
+    records: 'Registros y Conciencia',
+    coaching: 'Coaching Espiritual',
+    numerology: 'Numerología',
+    healing: 'Sanación Energética',
+    mediumship: 'Mediumnidad',
+    cleansing: 'Limpieza y Protección',
+    rituals: 'Rituales y Manifestación'
+  }
 };
 
-function parseCSV(text){
-  const lines=text.trim().split('\n');
-  const headers=lines[0].split(',').map(h=>h.replace(/^"|"$/g,'').trim());
-  return lines.slice(1).map(line=>{
-    const vals=[];let cur='',inQ=false;
-    for(let c of line){
-      if(c==='"'){inQ=!inQ;continue;}
-      if(c===','&&!inQ){vals.push(cur.trim());cur='';continue;}
-      cur+=c;
+// Parse CSV text into array of objects
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.replace(/^"|"$/g, '').trim());
+  return lines.slice(1).map(line => {
+    const vals = [];
+    let cur = '', inQ = false;
+    for (let c of line) {
+      if (c === '"') { inQ = !inQ; continue; }
+      if (c === ',' && !inQ) { vals.push(cur.trim()); cur = ''; continue; }
+      cur += c;
     }
     vals.push(cur.trim());
-    const obj={};
-    headers.forEach((h,i)=>obj[h]=vals[i]||'');
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = vals[i] || '');
     return obj;
-  }).filter(r=>r.nombre_es&&r.nombre_es.trim());
+  }).filter(r => r.nombre_es && r.nombre_es.trim());
 }
 
-function getSubcatLabel(slug){
-  for(const cat of Object.values(SUBCATS)){
-    const found=cat.find(s=>s.slug===slug);
-    if(found) return found[currentLang];
-  }
-  return slug;
-}
+// Build a card HTML string
+function buildCard(s) {
+  const name = currentLang === 'es' ? s.nombre_es : s.nombre_en;
+  const specialty = currentLang === 'es' ? s.especialidad_es : s.especialidad_en;
+  const bio = currentLang === 'es' ? s.bio_es : s.bio_en;
+  const cat = (s.categoria || '').trim().toLowerCase();
+  const catLabel = (CAT_LABELS[currentLang][cat]) || cat;
+  const precio = s.precio ? '$' + s.precio : '';
+  const rating = s.rating || '5';
+  const resenas = s.resenas || '0';
+  const langs = (s.idiomas || '').split('·').map(l => l.trim()).filter(Boolean);
+  const foto = s.foto_url || 'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80';
+  const booking = s.booking_url || '#';
 
-function buildCard(s, isPriority){
-  const name=currentLang==='es'?s.nombre_es:s.nombre_en;
-  const specialty=currentLang==='es'?s.especialidad_es:s.especialidad_en;
-  const bio=currentLang==='es'?s.bio_es:s.bio_en;
-  const cat=(s.categoria||'').trim().toLowerCase();
-  const catLabel=CAT_LABELS[currentLang][cat]||cat;
-  const subcats=(s.subcategorias||'').split(',').map(x=>x.trim()).filter(Boolean);
-  const precio=s.precio?'$'+s.precio:'';
-  const rating=s.rating||'5';
-  const resenas=s.resenas||'0';
-  const langs=(s.idiomas||'').split('·').map(l=>l.trim()).filter(Boolean);
-  const foto=s.foto_url||'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80';
-  const booking=s.booking_url||'#';
-  const stars='★'.repeat(Math.round(parseFloat(rating)))+'☆'.repeat(5-Math.round(parseFloat(rating)));
-  const bookLabel=currentLang==='es'?'Reservar':'Book now';
-  const sessionLabel=currentLang==='es'?'/sesión':'/session';
-  const reviewLabel=currentLang==='es'?'reseñas':'reviews';
-  const matchLabel=currentLang==='es'?'Servicio exacto':'Exact match';
-
-  const subcatTags=subcats.map(slug=>{
-    const isMatch=activeSub!=='all'&&slug===activeSub;
-    return `<span class="svc-tag${isMatch?' matched':''}">${getSubcatLabel(slug)}</span>`;
-  }).join('');
+  const stars = '★'.repeat(Math.round(parseFloat(rating))) + '☆'.repeat(5 - Math.round(parseFloat(rating)));
+  const bookLabel = currentLang === 'es' ? 'Reservar' : 'Book now';
+  const sessionLabel = currentLang === 'es' ? '/sesión' : '/session';
+  const reviewLabel = currentLang === 'es' ? 'reseñas' : 'reviews';
 
   return `
-<div class="spec-card reveal${isPriority?' priority':''}" data-cat="${cat}" data-subs="${s.subcategorias||''}" data-langs="${s.idiomas||''}">
-  <img class="card-photo" src="${foto}" alt="${name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80'">
+<div class="spec-card reveal" data-cat="${cat}" data-langs="${s.idiomas}">
+  <img class="card-photo" src="${foto}" alt="${name}" loading="lazy"
+    onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80'">
   <span class="card-cat-badge cat-${cat}">${catLabel}</span>
-  ${isPriority&&activeSub!=='all'?`<span class="card-match-badge">${matchLabel}</span>`:''}
   <div class="card-body">
     <div class="card-name">${name}</div>
     <div class="card-specialty">${specialty}</div>
     <div class="card-bio">${bio}</div>
-    ${subcatTags?`<div class="card-services">${subcatTags}</div>`:''}
     <div class="card-meta">
-      <div class="meta-item"><span style="color:#c9a84c;font-size:12px;">${stars}</span><span>${rating}</span></div>
-      <div class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px;opacity:0.5;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>${resenas} ${reviewLabel}</div>
+      <div class="meta-item">
+        <span style="color:#c9a84c;font-size:12px;">${stars}</span>
+        <span>${rating}</span>
+      </div>
+      <div class="meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        ${resenas} ${reviewLabel}
+      </div>
     </div>
-    <div class="card-langs">${langs.map(l=>`<span class="lang-tag">${l}</span>`).join('')}</div>
+    <div class="card-langs">
+      ${langs.map(l => `<span class="lang-tag">${l}</span>`).join('')}
+    </div>
     <div class="card-footer">
       <div class="card-price">${precio}<span>${sessionLabel}</span></div>
       <a href="${booking}" class="card-booking" target="_blank" rel="noopener">${bookLabel}</a>
@@ -324,144 +256,71 @@ function buildCard(s, isPriority){
 </div>`;
 }
 
-function render(){
-  const grid=document.getElementById('specialists-grid');
-  const count=document.getElementById('results-count');
-  const afd=document.getElementById('active-filter-display');
-
-  // Filter
-  let filtered=allSpecialists.filter(s=>{
-    const catMatch=activeCat==='all'||(s.categoria||'').trim().toLowerCase()===activeCat;
-    const langMatch=activeLang==='all'||(s.idiomas||'').includes(activeLang);
-    return catMatch&&langMatch;
+// Render filtered cards
+function render() {
+  const grid = document.getElementById('specialists-grid');
+  const filtered = allSpecialists.filter(s => {
+    const catMatch = activeCat === 'all' || (s.categoria || '').trim().toLowerCase() === activeCat;
+    const langMatch = activeLang === 'all' || (s.idiomas || '').includes(activeLang);
+    return catMatch && langMatch;
   });
 
-  // Sort: priority (exact sub match) first, then rest of category
-  let priority=[], rest=[];
-  if(activeSub!=='all'){
-    filtered.forEach(s=>{
-      const subs=(s.subcategorias||'').split(',').map(x=>x.trim());
-      if(subs.includes(activeSub)) priority.push(s);
-      else rest.push(s);
+  const count = document.getElementById('results-count');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">
+      <div class="empty-title">${currentLang === 'es' ? 'No se encontraron especialistas' : 'No specialists found'}</div>
+      <p style="font-size:13px;">${currentLang === 'es' ? 'Prueba con otro filtro' : 'Try a different filter'}</p>
+    </div>`;
+    count.textContent = '';
+    return;
+  }
+
+  count.textContent = currentLang === 'es'
+    ? `${filtered.length} especialista${filtered.length !== 1 ? 's' : ''} disponible${filtered.length !== 1 ? 's' : ''}`
+    : `${filtered.length} specialist${filtered.length !== 1 ? 's' : ''} available`;
+
+  grid.innerHTML = filtered.map(buildCard).join('');
+
+  // Trigger reveal animations
+  setTimeout(() => {
+    grid.querySelectorAll('.reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
     });
+  }, 50);
+}
+
+// Filter click handler
+function filter(type, el) {
+  if (type === 'cat') {
+    document.querySelectorAll('#cat-filters .fpill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    activeCat = el.dataset.cat;
   } else {
-    rest=filtered;
-  }
-
-  const total=priority.length+rest.length;
-  if(total===0){
-    grid.innerHTML=`<div class="empty"><div class="empty-title">${currentLang==='es'?'No se encontraron especialistas':'No specialists found'}</div><p style="font-size:13px;margin-top:8px;">${currentLang==='es'?'Prueba con otro filtro':'Try a different filter'}</p></div>`;
-    count.textContent='';afd.innerHTML='';return;
-  }
-
-  count.textContent=currentLang==='es'
-    ?`${total} especialista${total!==1?'s':''} disponible${total!==1?'s':''}`
-    :`${total} specialist${total!==1?'s':''} available`;
-
-  // Active filter display
-  if(activeSub!=='all'){
-    const subLabel=getSubcatLabel(activeSub);
-    const clearTxt=currentLang==='es'?'×':'×';
-    afd.innerHTML=`<span class="active-filter-tag">${subLabel} <span class="aft-x" onclick="clearSub()">${clearTxt}</span></span>`;
-  } else {afd.innerHTML='';}
-
-  // Build HTML
-  let html='';
-  if(priority.length>0){
-    const exactLabel=currentLang==='es'?`Especialistas en ${getSubcatLabel(activeSub)}`:`${getSubcatLabel(activeSub)} specialists`;
-    html+=`<div class="section-divider"><div class="sd-line"></div><span class="sd-label">${exactLabel} (${priority.length})</span><div class="sd-line"></div></div>`;
-    html+=priority.map(s=>buildCard(s,true)).join('');
-  }
-  if(rest.length>0&&priority.length>0){
-    const alsoLabel=currentLang==='es'?'También pueden ayudarte':'Others in this category';
-    html+=`<div class="section-divider"><div class="sd-line"></div><span class="sd-label">${alsoLabel} (${rest.length})</span><div class="sd-line"></div></div>`;
-    html+=rest.map(s=>buildCard(s,false)).join('');
-  }
-  if(priority.length===0){
-    html+=rest.map(s=>buildCard(s,false)).join('');
-  }
-
-  grid.innerHTML=html;
-  setTimeout(()=>{
-    grid.querySelectorAll('.reveal').forEach((el,i)=>{
-      setTimeout(()=>el.classList.add('visible'),i*70);
-    });
-  },30);
-}
-
-function selectCat(cat,el){
-  activeCat=cat;
-  activeSub='all';
-  document.querySelectorAll('#cat-filters .fpill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-
-  // Show/hide subfilter row
-  const subRow=document.getElementById('subfilter-row');
-  const subFilters=document.getElementById('sub-filters');
-  if(cat==='all'||!SUBCATS[cat]){
-    subRow.classList.remove('visible');
-    subFilters.innerHTML='';
-  } else {
-    const allSubLabel=currentLang==='es'?'Todos':'All services';
-    let html=`<span class="sub-pill all-sub active" data-sub="all" onclick="selectSub('all',this)">${allSubLabel}</span>`;
-    SUBCATS[cat].forEach(sc=>{
-      html+=`<span class="sub-pill" data-sub="${sc.slug}" onclick="selectSub('${sc.slug}',this)">${sc[currentLang]}</span>`;
-    });
-    subFilters.innerHTML=html;
-    subRow.classList.add('visible');
+    document.querySelectorAll('#lang-filters .fpill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    activeLang = el.dataset.lang;
   }
   render();
 }
 
-function selectSub(sub,el){
-  activeSub=sub;
-  document.querySelectorAll('#sub-filters .sub-pill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  render();
-}
-
-function clearSub(){
-  activeSub='all';
-  document.querySelectorAll('#sub-filters .sub-pill').forEach(p=>{
-    p.classList.toggle('active',p.dataset.sub==='all');
+// Language toggle
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const t = el.getAttribute('data-' + lang);
+    if (t) el.innerHTML = t;
   });
-  render();
-}
-
-function selectLang(lang,el){
-  activeLang=lang;
-  document.querySelectorAll('#lang-filters .fpill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  render();
-}
-
-function setLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('[data-en]').forEach(el=>{
-    const t=el.getAttribute('data-'+lang);
-    if(t) el.innerHTML=t;
+  document.querySelectorAll('.lb').forEach((b, i) => {
+    b.classList.toggle('active', (lang === 'en' && i === 0) || (lang === 'es' && i === 1));
   });
-  document.querySelectorAll('.lb').forEach((b,i)=>{
-    b.classList.toggle('active',(lang==='en'&&i===0)||(lang==='es'&&i===1));
-  });
-  document.documentElement.lang=lang;
-  // Rebuild subfilter pills in new language if visible
-  if(activeCat!=='all'&&SUBCATS[activeCat]){
-    const subFilters=document.getElementById('sub-filters');
-    const allSubLabel=lang==='es'?'Todos':'All services';
-    let html=`<span class="sub-pill all-sub${activeSub==='all'?' active':''}" data-sub="all" onclick="selectSub('all',this)">${allSubLabel}</span>`;
-    SUBCATS[activeCat].forEach(sc=>{
-      html+=`<span class="sub-pill${activeSub===sc.slug?' active':''}" data-sub="${sc.slug}" onclick="selectSub('${sc.slug}',this)">${sc[lang]}</span>`;
-    });
-    subFilters.innerHTML=html;
-  }
-  render();
+  document.documentElement.lang = lang;
+  render(); // Re-render cards in new language
 }
 
-function loadSpecialists(){
-  // Para agregar un especialista: copia un bloque {} y edita los valores.
-  // Para editar precio, foto, booking_url: cambia el valor en el campo correspondiente.
-  allSpecialists=[
+// Para agregar especialistas: copia un bloque y edita los valores
+// subcategorias: lista separada por comas de los servicios exactos
+function loadSpecialists() {
+  allSpecialists = [
     {nombre_es:'Isolde',nombre_en:'Isolde',especialidad_es:'Tarot · Guía Intuitiva',especialidad_en:'Tarot · Intuitive Guide',bio_es:'Con más de 15 años leyendo el tarot, Isolde mezcla simbolismo antiguo con sabiduría emocional moderna.',bio_en:'With over 15 years reading tarot, Isolde blends ancient symbolism with modern emotional wisdom.',foto_url:'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'5',resenas:'134',categoria:'divination',subcategorias:'tarot,oracle_cards',precio:'95'},
     {nombre_es:'Luna',nombre_en:'Luna',especialidad_es:'Astrología · Sanación Energética',especialidad_en:'Astrology · Energy Healing',bio_es:'Luna traduce el movimiento cósmico en comprensión práctica. Especializada en tránsitos y ciclos lunares.',bio_en:'Luna translates cosmic movement into practical understanding. Specialized in transits and lunar cycles.',foto_url:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES · EN',rating:'5',resenas:'89',categoria:'divination',subcategorias:'tarot,i_ching',precio:'120'},
     {nombre_es:'Margarita',nombre_en:'Margarita',especialidad_es:'Registros Akásicos · Propósito del Alma',especialidad_en:'Akashic Records · Soul Purpose',bio_es:'Margarita te ayuda a explorar la memoria profunda de tu alma, revelando patrones de vidas pasadas.',bio_en:'Margarita helps you explore the deep memory of your soul, revealing patterns from past lives.',foto_url:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES',rating:'5',resenas:'62',categoria:'records',subcategorias:'akashic_records,past_life,soul_contract',precio:'110'},
