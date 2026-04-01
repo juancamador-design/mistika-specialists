@@ -189,7 +189,7 @@ body{background:var(--ash);font-family:'DM Sans',sans-serif;color:var(--deep);fo
 </div>
 
 <script>
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSCSh4i3UgQ7vjwg-cYOFFh-WdbTgsqVY1Z4HXzALahR2V5ik4FipuPoSKWcDPyFyyEuqRBh5pSWlax/pub?gid=0&single=true&output=csv';
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1PDn1brjIaQuOipDRfN82xOAG3TSVu96TLcKEr4vYuEo/gviz/tq?tqx=out:csv&sheet=Hoja%201';
 
 let allSpecialists = [];
 let activeCat = 'all';
@@ -458,25 +458,18 @@ function setLang(lang){
   render();
 }
 
-async function loadSpecialists(){
-  try{
-    const res=await fetch(SHEET_CSV_URL);
-    if(!res.ok) throw new Error('Sheet not accessible');
-    const text=await res.text();
-    allSpecialists=parseCSV(text);
-    render();
-  } catch(e){
-    allSpecialists=[
-      {nombre_es:'Isolde',nombre_en:'Isolde',especialidad_es:'Tarot · Guía Intuitiva',especialidad_en:'Tarot · Intuitive Guide',bio_es:'Con más de 15 años leyendo el tarot, Isolde mezcla simbolismo antiguo con sabiduría emocional moderna.',bio_en:'With over 15 years reading tarot, Isolde blends ancient symbolism with modern emotional wisdom.',foto_url:'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'5',resenas:'134',categoria:'divination',subcategorias:'tarot,oracle_cards',precio:'95'},
-      {nombre_es:'Luna',nombre_en:'Luna',especialidad_es:'Astrología · Sanación Energética',especialidad_en:'Astrology · Energy Healing',bio_es:'Luna traduce el movimiento cósmico en comprensión práctica.',bio_en:'Luna translates cosmic movement into practical understanding.',foto_url:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES · EN',rating:'5',resenas:'89',categoria:'divination',subcategorias:'tarot,i_ching',precio:'120'},
-      {nombre_es:'Margarita',nombre_en:'Margarita',especialidad_es:'Registros Akásicos · Propósito del Alma',especialidad_en:'Akashic Records · Soul Purpose',bio_es:'Margarita te ayuda a explorar la memoria profunda de tu alma.',bio_en:'Margarita helps you explore the deep memory of your soul.',foto_url:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES',rating:'5',resenas:'62',categoria:'records',subcategorias:'akashic_records,past_life,soul_contract',precio:'110'},
-      {nombre_es:'Adrian',nombre_en:'Adrian',especialidad_es:'Life Coach · Mentoría de Manifestación',especialidad_en:'Life Coach · Manifestation Mentor',bio_es:'Estratega con corazón espiritual. Combina coaching, PNL y trabajo intuitivo.',bio_en:'Strategist with a spiritual heart. Combines coaching, NLP and intuitive work.',foto_url:'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'4',resenas:'47',categoria:'coaching',subcategorias:'manifestation_coaching,life_purpose,spiritual_coaching',precio:'130'},
-      {nombre_es:'Petra',nombre_en:'Petra',especialidad_es:'Numerología · Armonía Interior',especialidad_en:'Numerology · Inner Harmony',bio_es:'Petra descifra el lenguaje de los números para revelar tu camino de vida.',bio_en:'Petra decodes the language of numbers to reveal your life path.',foto_url:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES',rating:'5',resenas:'78',categoria:'numerology',subcategorias:'life_path,name_destiny,personal_year',precio:'90'},
-      {nombre_es:'Jimena',nombre_en:'Jimena',especialidad_es:'Meditación · Equilibrio Energético',especialidad_en:'Meditation · Energy Balance',bio_es:'Jimena enseña la presencia a través de la respiración y la alineación energética.',bio_en:'Jimena teaches presence through breathwork and gentle energy alignment.',foto_url:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES · EN',rating:'5',resenas:'55',categoria:'healing',subcategorias:'reiki,chakra_balancing,energy_healing',precio:'85'},
-    ];
-    render();
-    console.log('Using demo data. Check SHEET_JSON_URL and Sheet permissions.');
-  }
+function loadSpecialists(){
+  // Para agregar un especialista: copia un bloque {} y edita los valores.
+  // Para editar precio, foto, booking_url: cambia el valor en el campo correspondiente.
+  allSpecialists=[
+    {nombre_es:'Isolde',nombre_en:'Isolde',especialidad_es:'Tarot · Guía Intuitiva',especialidad_en:'Tarot · Intuitive Guide',bio_es:'Con más de 15 años leyendo el tarot, Isolde mezcla simbolismo antiguo con sabiduría emocional moderna.',bio_en:'With over 15 years reading tarot, Isolde blends ancient symbolism with modern emotional wisdom.',foto_url:'https://images.unsplash.com/photo-1604459848804-6748722073cd?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'5',resenas:'134',categoria:'divination',subcategorias:'tarot,oracle_cards',precio:'95'},
+    {nombre_es:'Luna',nombre_en:'Luna',especialidad_es:'Astrología · Sanación Energética',especialidad_en:'Astrology · Energy Healing',bio_es:'Luna traduce el movimiento cósmico en comprensión práctica. Especializada en tránsitos y ciclos lunares.',bio_en:'Luna translates cosmic movement into practical understanding. Specialized in transits and lunar cycles.',foto_url:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES · EN',rating:'5',resenas:'89',categoria:'divination',subcategorias:'tarot,i_ching',precio:'120'},
+    {nombre_es:'Margarita',nombre_en:'Margarita',especialidad_es:'Registros Akásicos · Propósito del Alma',especialidad_en:'Akashic Records · Soul Purpose',bio_es:'Margarita te ayuda a explorar la memoria profunda de tu alma, revelando patrones de vidas pasadas.',bio_en:'Margarita helps you explore the deep memory of your soul, revealing patterns from past lives.',foto_url:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES',rating:'5',resenas:'62',categoria:'records',subcategorias:'akashic_records,past_life,soul_contract',precio:'110'},
+    {nombre_es:'Adrian',nombre_en:'Adrian',especialidad_es:'Life Coach · Mentoría de Manifestación',especialidad_en:'Life Coach · Manifestation Mentor',bio_es:'Estratega con corazón espiritual. Combina coaching, PNL y trabajo intuitivo para atraer abundancia.',bio_en:'Strategist with a spiritual heart. Combines coaching, NLP and intuitive work to attract abundance.',foto_url:'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/tarot_with_isolde',idiomas:'ES · EN',rating:'4',resenas:'47',categoria:'coaching',subcategorias:'manifestation_coaching,life_purpose,spiritual_coaching',precio:'130'},
+    {nombre_es:'Petra',nombre_en:'Petra',especialidad_es:'Numerología · Armonía Interior',especialidad_en:'Numerology · Inner Harmony',bio_es:'Petra descifra el lenguaje de los números para revelar tu camino de vida y tu tiempo personal.',bio_en:'Petra decodes the language of numbers to reveal your life path and personal timing.',foto_url:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/luna-c-personal-calendar-j-3rytcly',idiomas:'ES',rating:'5',resenas:'78',categoria:'numerology',subcategorias:'life_path,name_destiny,personal_year',precio:'90'},
+    {nombre_es:'Jimena',nombre_en:'Jimena',especialidad_es:'Meditación · Equilibrio Energético',especialidad_en:'Meditation · Energy Balance',bio_es:'Jimena enseña la presencia a través de la respiración y la alineación energética suave.',bio_en:'Jimena teaches presence through breathwork and gentle energy alignment.',foto_url:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80',booking_url:'https://api.leadconnectorhq.com/widget/bookings/margarita-m-personal-calendar-dbzzrg94w',idiomas:'ES · EN',rating:'5',resenas:'55',categoria:'healing',subcategorias:'reiki,chakra_balancing,energy_healing',precio:'85'},
+  ];
+  render();
 }
 
 loadSpecialists();
